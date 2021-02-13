@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrudApiDotnet</name>
+    </assembly>
+    <members>
+        <member name="M:CrudApiDotnet.Controllers.CursoController.Post(CrudApiDotnet.Models.Cursos.CursoViewModelInput)">
+            <summary>
+            Este método permite cadastrar curso para o usuário autenticado.
+            </summary>
+            <param name="cursoViewModelInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CrudApiDotnet.Controllers.CursoController.Get">
+            <summary>
+            Este método permite cadastrar curso para o usuário autenticado.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CrudApiDotnet.Controllers.UsuarioController.Logar(CrudApiDotnet.Models.Usuarios.LoginViewModelInput)">
+            <summary>
+            Este serviço permite autenticar um usuário cadastrado e ativo
+            </summary>
+            <param name="loginViewModelInput"></param>
+            <returns>Retorna status ok, dados de usuario e o token em caso de sucesso</returns>
+        </member>
+        <member name="M:CrudApiDotnet.Controllers.UsuarioController.Registrar(CrudApiDotnet.Models.Usuarios.RegistroViewModelInput)">
+            <summary>
+            Este método permite cadastrar um usuário não existente
+            </summary>
+            <param name="registroViewModelInput">View model de registro de login</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
