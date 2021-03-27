@@ -6,6 +6,7 @@ using CrudApiDotnet.Models;
 using CrudApiDotnet.Models.Usuarios;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Threading.Tasks;
 
 namespace CrudApiDotnet.Controllers
 {
@@ -36,9 +37,9 @@ namespace CrudApiDotnet.Controllers
         [HttpPost]
         [Route("logar")]
         [ValidacaoModelStateCustomizado]
-        public IActionResult Logar(LoginViewModelInput loginViewModelInput)
+        public async Task<IActionResult> Logar(LoginViewModelInput loginViewModelInput)
         {
-            var usuario = _usuarioRepository.ObterUsuario(loginViewModelInput.Login);
+            var usuario = await _usuarioRepository.ObterUsuarioAsync(loginViewModelInput.Login);
 
             if (usuario == null)
                 return BadRequest("Houve um erro ao tentar acessar");
@@ -73,9 +74,16 @@ namespace CrudApiDotnet.Controllers
         [SwaggerResponse(statusCode: 200, description: "Sucesso ao autenticar", Type = typeof(LoginViewModelInput))]
         [SwaggerResponse(statusCode: 400, description: "Campos obrigatórios", Type = typeof(ValidaCampoViewModelOutput))]
         [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
-        public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
+        public async Task<IActionResult> Registrar(RegistroViewModelInput registroViewModelInput)
         {
-            var usuario = new Usuario
+            var usuario = await _usuarioRepository.ObterUsuarioAsync(registroViewModelInput.Login);
+
+            if(usuario != null)
+            {
+                return BadRequest("Usuário já cadastrado");
+            }
+
+            usuario = new Usuario
             {
                 Login = registroViewModelInput.Login,
                 Email = registroViewModelInput.Email,

@@ -45,7 +45,13 @@ namespace CrudApiDotnet.Controllers
             _cursoRepository.Adicionar(curso);
             _cursoRepository.Commit();
 
-            return Created("", cursoViewModelInput);
+            var cursoViewModelOutput = new CursoViewModelOutput
+            {
+                Nome = curso.Nome,
+                Descricao = curso.Descricao
+            };
+
+            return Created("", cursoViewModelOutput);
         }
 
         /// <summary>

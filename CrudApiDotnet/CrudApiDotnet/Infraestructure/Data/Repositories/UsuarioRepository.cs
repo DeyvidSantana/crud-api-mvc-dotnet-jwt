@@ -1,7 +1,9 @@
 ﻿using CrudApiDotnet.Business.Entidades;
 using CrudApiDotnet.Business.Repositories;
 using CrudApiDotnet.Infraestrutura.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CrudApiDotnet.Infraestructure.Data.Repositories
 {
@@ -24,9 +26,9 @@ namespace CrudApiDotnet.Infraestructure.Data.Repositories
             _contexto.SaveChanges();
         }
 
-        public Usuario ObterUsuario(string login)
+        public async Task<Usuario> ObterUsuarioAsync(string login)
         {
-            return _contexto.Usuario.FirstOrDefault(u => u.Login == login);
+            return await _contexto.Usuario.FirstOrDefaultAsync(u => u.Login == login);
         }
     }
 }

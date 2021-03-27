@@ -1,4 +1,5 @@
 ﻿using CrudApiDotnet.Business.Entidades;
+using System.Threading.Tasks;
 
 namespace CrudApiDotnet.Business.Repositories
 {
@@ -6,6 +7,6 @@ namespace CrudApiDotnet.Business.Repositories
     {
         void Adicionar(Usuario usuario);
         void Commit();
-        Usuario ObterUsuario(string login);
+        Task<Usuario> ObterUsuarioAsync(string login);
     }
 }
