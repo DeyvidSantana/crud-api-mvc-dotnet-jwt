@@ -1,12 +1,12 @@
-# .NET API/MVC Crud with JWT Authentication
+# Crud .NET API/MVC com testes e autenticação JWT
 
-This repository contains a solution with API project and MVC project of a crud of users and their courses. JWT authentication has been implemented.
+Este repositório contém uma solução com projeto API, projeto MVC e suíte de testes de uma crud de usuários e seus cursos. A autenticação JWT foi implementada.
 
-Note: authentication is not working. I can log in to a created user, but I cannot register courses for this user because error 501 (unauthorized) always occurs. The integration tests of the course also don't work due to authentication failure.
+Nota: a autenticação não está funcionando. Consigo fazer login com um usuário criado, mas não consigo registrar cursos para esse usuário porque o erro 501 (não autorizado) sempre ocorre. Os testes de integração do curso também não funcionam devido a falha de autenticação.
 
-SQL Server was used in the project as a database. I used migrations to version the bank that works well.
+O SQL Server foi usado no projeto como um banco de dados. Usei migrações para versionar o banco que funciona bem.
 
-Packages: 
+Pacotes: 
 - API: Microsoft.EntityFrameworkCore (self, SqlServer, Tools, Relational), Microsoft.AspNetCore.Authentication (Abstractions, JwtBearer), Swashbuckle.AspNetCore (self, Annotations).
 - MVC: Refit (self, HttpClientFactory)
 - XUnit: AutoBogus.
